@@ -9,15 +9,30 @@ class Term
     @@all_terms = []
   end
 
+  def Term.by_index(index)
+    @@all_terms[index]
+  end
+
+  def Term.term_delete(index)
+    term = @@all_terms.delete_at(index)
+  end
+
+  def Term.term_sort
+    @@all_terms.sort! { |term_1, term_2 | term_1.word <=> term_2.word }
+  end
+
   def initialize (word,definition)
-    @words = []
     @definitions = []
-    @words << word
+    @word = word # {English => "House", Spanish => "Casa"}
     @definitions << definition
   end
 
-  def words
-    @words
+  def term_add
+    @@all_terms << self
+  end
+
+  def word
+    @word
   end
 
   def definitions
