@@ -43,4 +43,21 @@ describe "Term" do
     expect(Term.all).to eq [test_term2, test_term1]
   end
 
+  it "'definition_add' adds a definition to the term" do
+     test_term = Term.new("House", "A place where a person lives")
+     test_term.definition_add("A place where laws go to die")
+     expect(test_term.definitions).to eq ["A place where a person lives", "A place where laws go to die"]
+  end
+
+  it "'definition_edit' changes the definition of the term" do
+    test_term = Term.new("House", "A place where a person lives")
+    test_term.definition_edit(0, "A place where laws go to die")
+    expect(test_term.definitions).to eq ["A place where laws go to die"]
+  end
+
+  it "'definition_delete' deletes a definition from the term" do
+    test_term = Term.new("House", "A place where a person lives")
+    test_term.definition_delete(0)
+    expect(test_term.definitions).to eq []
+  end
 end

@@ -39,4 +39,16 @@ class Term
     @definitions
   end
 
+  def definition_add(definition)
+    @definitions << definition
+  end
+
+  def definition_edit(index,new_definition)
+    @definitions[index] = new_definition
+  end
+
+  def definition_delete(index)
+    definition = @definitions.delete_at(index)
+  end
+
 end
